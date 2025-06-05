@@ -1,8 +1,8 @@
 const express = require('express')
-const {handleAnalytics} = require("../controllers/analyticsController") 
+const {renderAnalyticsPage, renderAnalyticsSearch} = require("../controllers/analyticsController") 
 
 const analyticsRouter = express.Router();
-
-analyticsRouter.get('/:id', handleAnalytics );
+analyticsRouter.get('/', renderAnalyticsPage);
+analyticsRouter.get('/search/', renderAnalyticsSearch );
 
 module.exports = analyticsRouter;

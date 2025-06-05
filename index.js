@@ -1,6 +1,7 @@
 const express = require("express");
 const urlRouter = require('./routes/urlRouter');
 const analyticsRouter = require('./routes/analyticsRouter');
+const statsRouter = require('./routes/statsRouter');
 const homeRouter = require("./routes/homeRouter");
 const {connectMongoDB} = require("./config/connections");
 const path = require("path")
@@ -17,9 +18,10 @@ app.use(express.static("public"));
 app.use(express.urlencoded({extended: true})); //since we were sending form-data
 app.use(express.json()); //possibly for other routes, im forgetting
 
-app.use("/url", urlRouter);
+
 app.use("/", homeRouter);
-// app.use("/url", urlRouter);
+app.use("/url", urlRouter);
 app.use("/analytics", analyticsRouter);
+app.use("/stats", statsRouter)
 app.listen(PORT, ()=> console.log(`Server Started at Port ${PORT}`));
 

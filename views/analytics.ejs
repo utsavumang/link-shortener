@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analytics For Link</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+  <!-- Include navbar -->
+  <%- include("partials/navbar", { links: navbarLinks }) %>
+
+  <main class="homepage">
+  <h1>Search Link Analytics</h1>
+
+  <form action="/analytics/search" method="GET" class="shorten-form">
+    <input type="text" name="shortId" placeholder="Enter short ID" required />
+    <button type="submit">Search</button>
+  </form>
+
+  <% if (result && fullShortURL) { %>
+    <h2>Analytics for the Link:</h2>
+    <a href="<%= fullShortURL %>"><%= fullShortURL %></a>
+    <br><br>
+    <div>Total No. of Clicks: <%= result.visitHistory.length %></div>
+    <br><br>
+    <table>
+      <thead>
+        <tr>
+          <th>Serial No.</th>
+          <th>Timestamp of Visit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% result.visitHistory.forEach((time, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= new Date(time.timestamp).toLocaleString() %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+</main>
+
+</body>
+</html>

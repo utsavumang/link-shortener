@@ -3,7 +3,7 @@ A minimal, backend-powered URL shortening service which may be used for beautifi
 
 Built using **Node.js, Express, EJS, and MongoDB**. The frontend is kept intentionally simple to focus on core backend learning.
 
-## 🌐 Live Demo
+## Live Demo
 
 [Coming Soon / To be deployed]
 
@@ -15,7 +15,7 @@ Built using **Node.js, Express, EJS, and MongoDB**. The frontend is kept intenti
 - clean modular project
 
 
-## 🧠 What I Learned
+## What I Learned
 
 - Setting up Express.js routes and controllers cleanly
 - Building reusable EJS views with conditionals
@@ -28,7 +28,7 @@ Built using **Node.js, Express, EJS, and MongoDB**. The frontend is kept intenti
 - Building a project without frontend JavaScript to understand server-side rendering deeply
 
 
-##Future Improvements
+## Future Improvements
 Future Improvements
 -Add visit statistics (click count, geo, timestamp)
 -Authentication for managing user links
@@ -36,7 +36,7 @@ Future Improvements
 -Copy-to-clipboard button (requires frontend JS)
 -Deploy to cloud 
 
-##Steps To Use:
+## Steps To Use:
 1. Clone the Repository
 2. Install dependencies
 3. Run the server

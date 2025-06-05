@@ -106,3 +106,25 @@ main.homepage > div {
   color: #333;
   font-weight: 500;
 }
+
+
+
+
+.result {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.short-url-container {
+  display: inline-flex; /* Center inline-flex inside the centered .result */
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.short-url-container a {
+  word-break: break-all;
+  font-weight: bold;
+  color: #0066cc;
+  text-decoration: none;
+}

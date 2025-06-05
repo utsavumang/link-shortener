@@ -19,11 +19,25 @@
       <button type="submit">Shorten</button>
     </form>
     <% if (locals.shortURL) { %> 
-    <!-- only shortURL could be used instead -->
-    <div class="result">
-      <p>Your shortened URL:</p>
-      <a href="<%= shortURL %>" target="_blank"><%= shortURL %></a>
-    </div>
+    <!-- also, just shortURL could be used instead -->
+        <div class="result">
+            <p>Your shortened URL:</p>
+            <div class="short-url-container">
+            <a href="<%= shortURL %>" target="_blank" id="shortUrl"><%= shortURL %></a>
+            <button onclick="copyToClipboard()">Copy</button>
+        </div>
+        </div>
+
+        <script>
+        function copyToClipboard() {
+            const text = document.getElementById('shortUrl').href;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Short URL copied to clipboard!');
+            }).catch(err => {
+                alert('Failed to copy: ' + err);
+            });
+        }
+        </script>
     <% } %>
   </main>
 

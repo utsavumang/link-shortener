@@ -14,25 +14,6 @@ Built using **Node.js, Express, EJS, and MongoDB**. The frontend is kept intenti
 - Uses EJS for Server Side Rendering of Service Page.
 - clean modular project
 
-##Project Structure
-├── controllers/
-│ ├── homeController.js
-│ └── urlController.js
-├── models/
-│ └── urlModel.js
-├── routes/
-│ ├── homeRouter.js
-│ └── urlRouter.js
-├── views/
-│ ├── home.ejs
-│ └── partials/
-│ └── navbar.ejs
-├── public/
-│ └── css/
-│ └── style.css
-├── index.js
-├── .env
-└── README.md
 
 ## 🧠 What I Learned
 

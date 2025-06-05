@@ -1,17 +1,9 @@
 const express = require('express')
-
+const{renderHome} = require("../controllers/homeController");
 
 const homeRouter = express.Router();
 
-const navbarLinks = [
-    { href: "/", text: "Home" },
-    { href: "/shorten", text: "Shorten" },
-    { href: "/stats", text: "Stats" },
-    { href: "/about", text: "About" }
-  ];
 
-homeRouter.get('/', (req, res) =>
-    res.render("home", { navbarLinks : navbarLinks})
-);
+homeRouter.get('/', renderHome);
 
 module.exports = homeRouter;

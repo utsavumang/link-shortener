@@ -7,7 +7,7 @@ Built using **Node.js, Express, EJS, and MongoDB**. The frontend is kept intenti
 
 [Coming Soon / To be deployed]
 
-##Features:
+## Features:
 - Generates a unique 8 character string via nanoid package.
 - String along with original url stored in mongodb model url.
 - Also, for each url, click count is tracked along with visit history (extendable to analytics).

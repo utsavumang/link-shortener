@@ -17,6 +17,7 @@ async function handleGenerateShortURL(req, res) {
     const fullShortUrl = `${req.protocol}://${req.get("host")}/url/${shortId}`;
 
     return renderHome(req, res, { shortURL: fullShortUrl });;
+    // Would have been much simpler if we used res.render directly here but i was trying to prevent navbar components from repetition
 
 }
 

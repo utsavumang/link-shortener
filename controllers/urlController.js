@@ -16,7 +16,7 @@ async function handleGenerateShortURL(req, res) {
     });
     const fullShortUrl = `${req.protocol}://${req.get("host")}/url/${shortId}`;
 
-    return renderHome(req, res, fullShortUrl);
+    return renderHome(req, res, { shortURL: fullShortUrl });;
 
 }
 

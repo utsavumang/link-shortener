@@ -1,18 +1,18 @@
 const navbarLinks = [
     { href: "/", text: "Home" },
-    { href: "/shorten", text: "Shorten" },
     { href: "/stats", text: "Stats" },
-    { href: "/about", text: "About" }
+    { href: "https://github.com/utsavumang/link-shortener", text: "Github Repo" },
+    { href: "https://github.com/utsavumang/link-shortener#link-shortener", text: "About" },
   ];
 
 
-async function renderHome(req, res, shortURL = null ) {
+async function renderHome(req, res, options = {}) {
+  const { shortURL = null } = options;
 
-    res.render("home", {
-         navbarLinks : navbarLinks,
-         shortURL : shortURL,
-    })
-
+  res.render("home", {
+    navbarLinks,
+    shortURL,
+  });
 }
 
 module.exports = {

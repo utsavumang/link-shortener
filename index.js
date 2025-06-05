@@ -14,8 +14,8 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
+app.use(express.urlencoded({extended: true})); //since we were sending form-data
+app.use(express.json()); //possibly for other routes, im forgetting
 
 app.use("/url", urlRouter);
 app.use("/", homeRouter);

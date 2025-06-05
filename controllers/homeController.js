@@ -6,9 +6,12 @@ const navbarLinks = [
   ];
 
 
-async function renderHome(req, res) {
+async function renderHome(req, res, shortURL = null ) {
 
-    res.render("home", { navbarLinks : navbarLinks})
+    res.render("home", {
+         navbarLinks : navbarLinks,
+         shortURL : shortURL,
+    })
 
 }
 

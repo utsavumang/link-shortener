@@ -1,6 +1,7 @@
 const { nanoid } = require('nanoid');
 
 const URL = require("../models/url")
+const { renderHome } = require("./homeController");
 
 async function handleGenerateShortURL(req, res) {
     
@@ -13,8 +14,9 @@ async function handleGenerateShortURL(req, res) {
         redirectURL: req.body.url,
         visitHistory : [],
     });
+    const fullShortUrl = `${req.protocol}://${req.get("host")}/url/${shortId}`;
 
-    return res.render({id : shortId});
+    return renderHome(req, res, fullShortUrl);
 
 }
 

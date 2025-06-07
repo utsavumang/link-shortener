@@ -10,7 +10,7 @@ function renderLoginForm(req, res) {
 
 
 async function handleSignup(req, res) {
-  const { username, email, password } = req.body;
+  const { name, email, password } = req.body;
 
   try {
     const existingUser = await User.findOne({ email });
@@ -18,7 +18,7 @@ async function handleSignup(req, res) {
       return res.status(400).send("User already exists");
     }
 
-    const newUser = new User({ username, email, password });
+    const newUser = new User({ name, email, password });
     await newUser.save();
 
     // Initialize session

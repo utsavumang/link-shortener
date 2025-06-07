@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const URL = require('../models/url'); // adjust path as needed
+const URL = require('../models/url'); 
 
 async function clearAll() {
   try {

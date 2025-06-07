@@ -22,7 +22,6 @@ async function renderAnalyticsSearch(req, res) {
     const shortId = req.query.shortId;
 
     if (!shortId) {
-        console.log("abc");
         return res.redirect("/analytics");
     }
 
@@ -36,6 +35,15 @@ async function renderAnalyticsSearch(req, res) {
             error: "Short ID not found",
         });
     }
+
+    if (result.createdBy && result.createdBy.toString() !== req.session.userId) {
+        return res.render("analytics", {
+            navbarLinks,
+            result: null,
+            fullShortURL: null,
+            error: "You are not authorized to view analytics for this link",
+        });
+    }
     const fullShortURL = `${req.protocol}://${req.get("host")}/url/${shortId}`;  
 
     res.render("analytics", {
@@ -47,7 +55,7 @@ async function renderAnalyticsSearch(req, res) {
 }
 
 async function renderStats(req, res) {
-    const urls = await URL.find();
+    const urls = await URL.find({ createdBy: req.session.userId });
     res.render("stats", {
         navbarLinks,
         urls,

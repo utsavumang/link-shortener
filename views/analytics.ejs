@@ -19,6 +19,10 @@
     <button type="submit">Search</button>
   </form>
 
+  <% if(error) { %>
+    <h2><%= error %></h2>
+  <% } %>  
+
   <% if (result && fullShortURL) { %>
     <h2>Analytics for the Link:</h2>
     <a href="<%= fullShortURL %>"><%= fullShortURL %></a>

@@ -9,7 +9,8 @@ const authRouter = require("./routes/authRouter");
 const {connectMongoDB} = require("./config/connections");
 const path = require("path")
 const session = require("express-session")
-const MongoStore = require("connect-mongo")
+const MongoStore = require("connect-mongo");
+const ensureAuthenticated = require("./middlewares/authMiddleware");
 
 const app = express();
 const PORT = 8000;
@@ -45,8 +46,8 @@ app.use((req, res, next) => {
 
 app.use("/auth", authRouter);
 app.use("/url", urlRouter);
-app.use("/analytics", analyticsRouter);
-app.use("/stats", statsRouter)
-app.use("/", homeRouter);
+app.use("/analytics", ensureAuthenticated, analyticsRouter);
+app.use("/stats", ensureAuthenticated, statsRouter)
+app.use("/", ensureAuthenticated, homeRouter);
 app.listen(PORT, ()=> console.log(`Server Started at Port ${PORT}`));
 

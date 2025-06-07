@@ -1,10 +1,15 @@
 const express = require("express");
+
 const urlRouter = require('./routes/urlRouter');
 const analyticsRouter = require('./routes/analyticsRouter');
 const statsRouter = require('./routes/statsRouter');
 const homeRouter = require("./routes/homeRouter");
+const authRouter = require("./routes/authRouter");
+
 const {connectMongoDB} = require("./config/connections");
 const path = require("path")
+const session = require("express-session")
+const MongoStore = require("connect-mongo")
 
 const app = express();
 const PORT = 8000;
@@ -18,10 +23,30 @@ app.use(express.static("public"));
 app.use(express.urlencoded({extended: true})); //since we were sending form-data
 app.use(express.json()); //possibly for other routes, im forgetting
 
+app.use(
+    session({
+        secret: "linkime",
+        resave: false,
+        saveUninitialized: false,
+        store: MongoStore.create({
+            mongoUrl: "mongodb://127.0.0.1:27017/link-shortener",
+            collectionName: "sessions",
+        }),
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24
+        }
+    })
+);
 
-app.use("/", homeRouter);
+app.use((req, res, next) => {
+    res.locals.uuser = req.session.user || null;
+    next();
+})
+
+app.use("/auth", authRouter);
 app.use("/url", urlRouter);
 app.use("/analytics", analyticsRouter);
 app.use("/stats", statsRouter)
+app.use("/", homeRouter);
 app.listen(PORT, ()=> console.log(`Server Started at Port ${PORT}`));
 

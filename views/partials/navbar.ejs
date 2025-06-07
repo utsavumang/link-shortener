@@ -6,5 +6,19 @@
     <% links.forEach(link => { %>
       <li><a href="<%= link.href %>"><%= link.text %></a></li>
     <% }) %>
+
+    <% if (!locals.user) { %>
+      <li class="navbar-item">
+        <a href="/auth/login" class="navbar-link">Login</a>
+      </li>
+      <li class="navbar-item">
+        <a href="/auth/signup" class="navbar-link">Signup</a>
+      </li>
+    <% } else { %>
+      <li class="navbar-item">
+        <a href="/auth/logout" class="navbar-link">Logout</a>
+      </li>
+    <% } %>
   </ul>
 </nav>
+

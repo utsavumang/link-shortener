@@ -40,7 +40,7 @@ app.use(
 );
 
 app.use((req, res, next) => {
-    res.locals.uuser = req.session.user || null;
+    res.locals.user = req.session.userId || null;
     next();
 })
 
